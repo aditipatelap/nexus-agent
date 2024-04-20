@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from 'react-router-dom';
+import { DataProvider } from './context/DataContext';
+import Main from './Main';
+import Update from './Update';
+import Footer from './Footer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DataProvider>
+        <div className="flex flex-col min-h--screen">
+          <Routes>
+            <Route path="/" element={ <Main /> } />
+            <Route path="/update" element={ <Update />} />
+          </Routes>
+        </div>
+        
+        <Footer/>
+
+      </DataProvider>
     </div>
   );
 }
